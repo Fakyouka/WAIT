@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://tf8ajasycj1g"]
+
+[ext_resource type="Script" uid="uid://bbkp2tcygsbww" path="res://scripts/player/player.gd" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://ckpvnrtm8yjki" path="res://scenes/props/cigarette.tscn" id="2_cigarette"]
+
+[node name="Player" type="Node3D" unique_id=1488695720]
+script = ExtResource("1_player")
+
+[node name="Head" type="Node3D" parent="." unique_id=975279796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1782353424]
+current = true
+fov = 61.8
+
+[node name="RightHandAnchor" type="Node3D" parent="Head/Camera3D" unique_id=721763529]
+transform = Transform3D(-0.8293332, -0.46750912, 0.3060094, 0.52475977, -0.8397965, 0.13917276, 0.19192109, 0.27600202, 0.941801, 0.23, -0.16, -0.34)
+
+[node name="Cigarette" parent="Head/Camera3D/RightHandAnchor" unique_id=1749481560 instance=ExtResource("2_cigarette")]
+transform = Transform3D(-0.1498985, -0.22878018, 0.46893594, -0.14707015, 0.47397074, 0.19273709, -0.4682496, -0.07562877, -0.21065404, -0.089613244, 0.015967607, -0.025093094)

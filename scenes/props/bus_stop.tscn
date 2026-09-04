@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bk7gd8wcwfu6w"]
+
+[ext_resource type="PackedScene" uid="uid://c4w5ha34ix2fq" path="res://assets/models/bus_stop/bus_stop.glb" id="1_bus_stop_model"]
+
+[node name="BusStop" type="Node3D" unique_id=1254608873]
+
+[node name="Model" parent="." unique_id=2014506958 instance=ExtResource("1_bus_stop_model")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=746797620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1932518, 0)
+shadow_enabled = true
+shadow_bias = 1.045
+shadow_normal_bias = 1.969
