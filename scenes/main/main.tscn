@@ -2,12 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://tf8ajasycj1g" path="res://scenes/player/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://bk7gd8wcwfu6w" path="res://scenes/props/bus_stop.tscn" id="2_iuonh"]
+[ext_resource type="PackedScene" path="res://scenes/props/sticker_board.tscn" id="3_k2fmo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
-size = Vector3(7.794922, 0.07946777, 11.705078)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
-size = Vector3(7.798584, 0.090148926, 11.705078)
+size = Vector3(45.394287, 0.07946777, 12.019653)
 
 [node name="Main" type="Node3D" unique_id=182432716]
 
@@ -17,12 +15,11 @@ transform = Transform3D(-0.99987936, 0, 0.015531711, 0, 1, 0, -0.015531711, 0, -
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1099188695]
 
 [node name="Mesh" type="MeshInstance3D" parent="Ground" unique_id=862734665]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.039367676, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.039367676, 1.49469)
 mesh = SubResource("BoxMesh_g4v7s")
-
-[node name="Collision" type="CollisionShape3D" parent="Ground" unique_id=1419832081]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03781128, 0)
-shape = SubResource("BoxShape3D_g4v7s")
 
 [node name="BusStop" parent="." unique_id=1254608873 instance=ExtResource("2_iuonh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3098806, 0.04321438, -3.5308552)
+
+[node name="StickerBoard" parent="." unique_id=1575321167 instance=ExtResource("3_k2fmo")]
+transform = Transform3D(0.0007113337, 0, -0.99999976, 0, 1, 0, 0.99999976, 0, 0.0007113337, 1.3798448, 0.07894015, -3.4455535)

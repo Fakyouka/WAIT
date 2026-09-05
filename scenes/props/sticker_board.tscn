@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://b1b1iiqay8cu0" path="res://assets/models/sticker_board/sticker_board.glb" id="1_sticker_board_model"]
+
+[node name="StickerBoard" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_sticker_board_model")]
+
+[node name="StickerRoot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.03)
+metadata/surface_size = Vector2(1.28, 0.88)
+metadata/safe_half_extents = Vector2(0.63, 0.43)
+metadata/front_normal = Vector3(0, 0, 1)
+metadata/surface_mesh = NodePath("../Model/StickerBoardModel/Panel/StickerSurface")
+metadata/surface_offset = 0.003
