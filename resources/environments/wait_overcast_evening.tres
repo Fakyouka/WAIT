@@ -1,0 +1,27 @@
+[gd_resource type="Environment" format=3 uid="uid://bq58ekxj4ed4t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_overcast"]
+sky_top_color = Color(0.4, 0.443137, 0.478431, 1)
+sky_horizon_color = Color(0.572549, 0.592157, 0.603922, 1)
+sky_curve = 0.2
+ground_bottom_color = Color(0.333333, 0.329412, 0.321569, 1)
+ground_horizon_color = Color(0.588235, 0.584314, 0.560784, 1)
+ground_curve = 0.2
+
+[sub_resource type="Sky" id="Sky_overcast"]
+sky_material = SubResource("ProceduralSkyMaterial_overcast")
+
+[resource]
+resource_name = "WAIT Overcast Evening"
+background_mode = 2
+sky = SubResource("Sky_overcast")
+ambient_light_source = 3
+ambient_light_energy = 0.68
+reflected_light_source = 2
+fog_enabled = true
+fog_light_color = Color(0.57254905, 0.5921569, 0.68235296, 1)
+fog_density = 0.003
+fog_sky_affect = 0.4
+adjustment_enabled = true
+adjustment_contrast = 1.05
+adjustment_saturation = 0.95
