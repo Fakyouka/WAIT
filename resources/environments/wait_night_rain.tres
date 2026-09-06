@@ -1,0 +1,28 @@
+[gd_resource type="Environment" format=3 uid="uid://bwoyv4untaknd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uar80"]
+sky_top_color = Color(0.1254902, 0.17254902, 0.21176471, 1)
+sky_horizon_color = Color(0.25490198, 0.29803923, 0.33333334, 1)
+sky_curve = 0.25
+ground_bottom_color = Color(0.09803922, 0.14117648, 0.16862746, 1)
+ground_horizon_color = Color(0.21568628, 0.26666668, 0.30980393, 1)
+ground_curve = 0.2
+
+[sub_resource type="Sky" id="Sky_f8hym"]
+sky_material = SubResource("ProceduralSkyMaterial_uar80")
+
+[resource]
+resource_name = "WAIT Night Rain"
+background_mode = 2
+sky = SubResource("Sky_f8hym")
+ambient_light_source = 3
+ambient_light_energy = 1.15
+reflected_light_source = 2
+fog_enabled = true
+fog_light_color = Color(0.20784314, 0.27058825, 0.3137255, 1)
+fog_light_energy = 0.65
+fog_density = 0.009
+fog_sky_affect = 0.25
+adjustment_enabled = true
+adjustment_contrast = 1.02
+adjustment_saturation = 0.93

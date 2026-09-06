@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "WAIT Lamp Lens"
+albedo_color = Color(0.63, 0.62, 0.54, 1)
+metallic_specular = 0.12

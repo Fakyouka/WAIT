@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cfk2lbxk472ju"]
+
+[ext_resource type="Texture2D" uid="uid://cb0btfytjhiyp" path="res://assets/textures/environment/trees/tree_02.png" id="1_g5uq2"]
+
+[node name="Tree02" type="Node3D" unique_id=868325078]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1206380825]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.008807588, 3.5, 0)
+pixel_size = 0.055555556
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_g5uq2")

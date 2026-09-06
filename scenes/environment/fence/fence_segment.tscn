@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/environment/fence/fence_segment.png" id="1_hvjqe"]
+
+[node name="FenceSegment" type="Node3D" unique_id=323950297]
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=493552825]
+transform = Transform3D(-1.1057693, 0, -8.742278e-08, 0, 1, 0, 9.666942e-08, 0, -1, 0, 0.39, 0)
+pixel_size = 0.016956521
+shaded = true
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("1_hvjqe")

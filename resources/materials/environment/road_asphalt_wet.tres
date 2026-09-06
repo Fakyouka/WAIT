@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bip65lbc71i3"]
+
+[ext_resource type="Texture2D" uid="uid://cnyhn87yllrve" path="res://assets/textures/environment/road_asphalt.png" id="1_hqqh3"]
+
+[resource]
+resource_name = "WAIT Wet Asphalt"
+albedo_color = Color(0.86, 0.9, 0.94, 1)
+albedo_texture = ExtResource("1_hqqh3")
+metallic_specular = 0.65
+roughness = 0.32
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 8.0
+uv1_world_triplanar = true
+texture_filter = 0

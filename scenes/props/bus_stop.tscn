@@ -8,12 +8,24 @@
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=746797620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49406266, 2.1932518, 0)
+light_color = Color(1, 0.88, 0.72, 1)
+light_energy = 0.85
+omni_range = 5.5
+omni_attenuation = 1.2
+light_indirect_energy = 0.622
+light_size = 0.008
 shadow_enabled = true
 shadow_bias = 1.045
 shadow_normal_bias = 1.969
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=965153755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45563662, 2.1932518, 0)
+light_color = Color(1, 0.88, 0.72, 1)
+light_energy = 0.85
+omni_range = 5.5
+omni_attenuation = 1.2
+light_indirect_energy = 0.622
+light_size = 0.008
 shadow_enabled = true
 shadow_bias = 1.045
 shadow_normal_bias = 1.969

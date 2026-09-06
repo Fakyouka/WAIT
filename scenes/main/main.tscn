@@ -3,15 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://tf8ajasycj1g" path="res://scenes/player/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://bk7gd8wcwfu6w" path="res://scenes/props/bus_stop.tscn" id="2_iuonh"]
 [ext_resource type="PackedScene" path="res://scenes/props/sticker_board.tscn" id="3_k2fmo"]
-[ext_resource type="Environment" uid="uid://bq58ekxj4ed4t" path="res://resources/environments/wait_overcast_evening.tres" id="4_environment"]
+[ext_resource type="Environment" uid="uid://bwoyv4untaknd" path="res://resources/environments/wait_night_rain.tres" id="4_environment"]
 [ext_resource type="PackedScene" path="res://scenes/rendering/pixel_post_process.tscn" id="5_post"]
 [ext_resource type="Script" uid="uid://d2wmxbhpswb7o" path="res://scripts/traffic/traffic_manager.gd" id="10_blune"]
 [ext_resource type="PackedScene" uid="uid://cc3uvdpg67nsx" path="res://scenes/traffic/traffic_car.tscn" id="11_th5th"]
+[ext_resource type="PackedScene" path="res://scenes/weather/puddles.tscn" id="night_puddles"]
+[ext_resource type="PackedScene" path="res://scenes/weather/night_rain.tscn" id="night_weather"]
+[ext_resource type="PackedScene" path="res://scenes/environment/fence/fence_segment.tscn" id="props_fence"]
+[ext_resource type="PackedScene" path="res://scenes/environment/street_lights/street_light.tscn" id="props_lamp"]
+[ext_resource type="PackedScene" uid="uid://bi80pm886c6i3" path="res://scenes/environment/trees/tree_01.tscn" id="props_tree_01"]
+[ext_resource type="PackedScene" uid="uid://cfk2lbxk472ju" path="res://scenes/environment/trees/tree_02.tscn" id="props_tree_02"]
+[ext_resource type="PackedScene" uid="uid://bxg4fq6qtht7c" path="res://scenes/environment/trees/tree_03.tscn" id="props_tree_03"]
 [ext_resource type="Material" path="res://resources/materials/environment/curb.tres" id="surface_curb"]
 [ext_resource type="Material" path="res://resources/materials/environment/ground.tres" id="surface_ground"]
-[ext_resource type="Material" path="res://resources/materials/environment/road_asphalt.tres" id="surface_road_asphalt"]
+[ext_resource type="Material" uid="uid://bip65lbc71i3" path="res://resources/materials/environment/road_asphalt_wet.tres" id="surface_road_asphalt"]
 [ext_resource type="Material" path="res://resources/materials/environment/road_marking.tres" id="surface_road_marking"]
-[ext_resource type="Material" path="res://resources/materials/environment/sidewalk.tres" id="surface_sidewalk"]
+[ext_resource type="Material" path="res://resources/materials/environment/sidewalk_wet.tres" id="surface_sidewalk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_3gngh"]
 size = Vector3(100.71777, 0.040161133, 7.303589)
@@ -25,22 +32,8 @@ size = Vector3(12.738281, 0.23291016, 3.8776855)
 [sub_resource type="BoxMesh" id="BoxMesh_d0u6y"]
 size = Vector3(44.144623, 0.23435974, 4.256592)
 
-[sub_resource type="BoxMesh" id="BoxMesh_5s0fj"]
-size = Vector3(36.727295, 0.7635498, 0.08544922)
-
 [sub_resource type="BoxMesh" id="BoxMesh_fcnqv"]
 size = Vector3(101.319336, 0.5395508, 4.5966797)
-
-[sub_resource type="BoxMesh" id="BoxMesh_33x8s"]
-size = Vector3(85.836914, 0.7890625, 0.109375)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_g4v7s"]
-top_radius = 0.063964844
-bottom_radius = 0.063964844
-height = 4.3710938
-
-[sub_resource type="BoxMesh" id="BoxMesh_p1u0y"]
-size = Vector3(0.5251465, 7.4627075, 0.4921875)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7numd"]
 size = Vector3(101.74524, 0.49023438, 37.33185)
@@ -100,11 +93,11 @@ environment = ExtResource("4_environment")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldViewport" unique_id=652351358]
 transform = Transform3D(0.5, 0, 0.8660254, 0.7094065, 0.57357645, -0.40957603, -0.49673176, 0.81915206, 0.28678823, 0, 0, 0)
-light_color = Color(0.94, 0.97, 1, 1)
-light_energy = 0.8
+light_color = Color(0.7, 0.79, 0.9, 1)
+light_energy = 0.13
 light_angular_distance = 8.0
 shadow_enabled = true
-shadow_opacity = 0.65
+shadow_opacity = 0.35
 shadow_blur = 2.0
 directional_shadow_blend_splits = true
 sky_mode = 1
@@ -242,14 +235,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.77547, -0.0775223, -3.386
 mesh = SubResource("BoxMesh_d0u6y")
 surface_material_override/0 = ExtResource("surface_sidewalk")
 
-[node name="Fence" type="MeshInstance3D" parent="WorldViewport/Location/SideWalkNear" unique_id=791006651]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.543142, 0.40420341, -1.4171755)
-mesh = SubResource("BoxMesh_5s0fj")
-
-[node name="Fence2" type="MeshInstance3D" parent="WorldViewport/Location/SideWalkNear" unique_id=1738807309]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.226042, 0.40420341, -1.4171755)
-mesh = SubResource("BoxMesh_5s0fj")
-
 [node name="BusStop" parent="WorldViewport/Location" unique_id=1254608873 instance=ExtResource("2_iuonh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3098806, 0.04321438, -3.5308552)
 
@@ -263,135 +248,535 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23022461, 7.9253693)
 mesh = SubResource("BoxMesh_fcnqv")
 surface_material_override/0 = ExtResource("surface_sidewalk")
 
-[node name="Fence" type="MeshInstance3D" parent="WorldViewport/Location/SideWalkFar" unique_id=2001585858]
+[node name="Environment" type="Node3D" parent="WorldViewport/Location" unique_id=1134792813]
+
+[node name="Fences" type="Node3D" parent="WorldViewport/Location/Environment" unique_id=1070729323]
+
+[node name="NearRight" type="Node3D" parent="WorldViewport/Location/Environment/Fences" unique_id=791006651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.543142, 0.40420341, -1.4171755)
+
+[node name="Segment01" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=654623938 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -17.21592, -0.3817749, 0)
+
+[node name="Segment02" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=1563278729 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -14.920464, -0.3817749, 0)
+
+[node name="Segment03" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=586830098 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -12.625008, -0.3817749, 0)
+
+[node name="Segment04" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=350392722 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -10.329552, -0.3817749, 0)
+
+[node name="Segment05" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=95761014 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -8.034096, -0.3817749, 0)
+
+[node name="Segment06" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=221044493 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -5.73864, -0.3817749, 0)
+
+[node name="Segment07" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=412969094 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -3.443184, -0.3817749, 0)
+
+[node name="Segment08" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=1930527819 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -1.147728, -0.3817749, 0)
+
+[node name="Segment09" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=1322553039 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 1.147728, -0.3817749, 0)
+
+[node name="Segment10" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=764287770 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 3.443184, -0.3817749, 0)
+
+[node name="Segment11" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=285602726 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 5.73864, -0.3817749, 0)
+
+[node name="Segment12" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=550296177 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 8.034096, -0.3817749, 0)
+
+[node name="Segment13" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=1571402633 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 10.329552, -0.3817749, 0)
+
+[node name="Segment14" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=1666215844 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 12.625008, -0.3817749, 0)
+
+[node name="Segment15" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=1127246860 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 14.920464, -0.3817749, 0)
+
+[node name="Segment16" parent="WorldViewport/Location/Environment/Fences/NearRight" unique_id=1512522093 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 17.21592, -0.3817749, 0)
+
+[node name="NearLeft" type="Node3D" parent="WorldViewport/Location/Environment/Fences" unique_id=1738807309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.226042, 0.40420341, -1.4171755)
+
+[node name="Segment01" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=344143140 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -17.21592, -0.3817749, 0)
+
+[node name="Segment02" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=1239652123 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -14.920464, -0.3817749, 0)
+
+[node name="Segment03" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=624194487 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -12.625008, -0.3817749, 0)
+
+[node name="Segment04" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=17236276 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -10.329552, -0.3817749, 0)
+
+[node name="Segment05" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=1675011958 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -8.034096, -0.3817749, 0)
+
+[node name="Segment06" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=828898048 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -5.73864, -0.3817749, 0)
+
+[node name="Segment07" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=1446885699 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -3.443184, -0.3817749, 0)
+
+[node name="Segment08" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=327301434 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, -1.147728, -0.3817749, 0)
+
+[node name="Segment09" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=94889120 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 1.147728, -0.3817749, 0)
+
+[node name="Segment10" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=1140816426 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 3.443184, -0.3817749, 0)
+
+[node name="Segment11" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=91889899 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 5.73864, -0.3817749, 0)
+
+[node name="Segment12" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=2097016228 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 8.034096, -0.3817749, 0)
+
+[node name="Segment13" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=803670532 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 10.329552, -0.3817749, 0)
+
+[node name="Segment14" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=1397147464 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 12.625008, -0.3817749, 0)
+
+[node name="Segment15" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=62381270 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 14.920464, -0.3817749, 0)
+
+[node name="Segment16" parent="WorldViewport/Location/Environment/Fences/NearLeft" unique_id=1775343030 instance=ExtResource("props_fence")]
+transform = Transform3D(0.95644, 0, 0, 0, 0.97891, 0, 0, 0, 1, 17.21592, -0.3817749, 0)
+
+[node name="Far" type="Node3D" parent="WorldViewport/Location/Environment/Fences" unique_id=2001585858]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.048279405, 0.41433692, 5.8168325)
-mesh = SubResource("BoxMesh_33x8s")
 
-[node name="Environment" type="StaticBody3D" parent="WorldViewport/Location" unique_id=1134792813]
+[node name="Segment01" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=235278112 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -41.726276, -0.39453125, 0)
 
-[node name="LampPost1" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1602448086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5984974, 2.0035489, -4.403796)
-mesh = SubResource("CylinderMesh_g4v7s")
+[node name="Segment02" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=916743343 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -39.34192, -0.39453125, 0)
 
-[node name="LampPost2" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1310558519]
+[node name="Segment03" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=2143218342 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -36.95756, -0.39453125, 0)
+
+[node name="Segment04" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=116160737 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -34.5732, -0.39453125, 0)
+
+[node name="Segment05" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1390927291 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -32.188843, -0.39453125, 0)
+
+[node name="Segment06" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=614571042 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -29.804483, -0.39453125, 0)
+
+[node name="Segment07" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=904791438 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -27.420126, -0.39453125, 0)
+
+[node name="Segment08" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1757578045 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -25.035767, -0.39453125, 0)
+
+[node name="Segment09" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=706533852 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -22.651407, -0.39453125, 0)
+
+[node name="Segment10" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=200462104 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -20.26705, -0.39453125, 0)
+
+[node name="Segment11" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=611900398 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -17.88269, -0.39453125, 0)
+
+[node name="Segment12" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1023742024 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -15.498332, -0.39453125, 0)
+
+[node name="Segment13" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=2144592179 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -13.113973, -0.39453125, 0)
+
+[node name="Segment14" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=632014419 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -10.729614, -0.39453125, 0)
+
+[node name="Segment15" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=338275456 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -8.345256, -0.39453125, 0)
+
+[node name="Segment16" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=650300757 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -5.960897, -0.39453125, 0)
+
+[node name="Segment17" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1251944693 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -3.576538, -0.39453125, 0)
+
+[node name="Segment18" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=552917958 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, -1.1921793, -0.39453125, 0)
+
+[node name="Segment19" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1677756749 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 1.1921793, -0.39453125, 0)
+
+[node name="Segment20" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1094801513 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 3.576538, -0.39453125, 0)
+
+[node name="Segment21" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1824120524 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 5.960897, -0.39453125, 0)
+
+[node name="Segment22" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=82978711 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 8.345256, -0.39453125, 0)
+
+[node name="Segment23" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=423100817 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 10.729614, -0.39453125, 0)
+
+[node name="Segment24" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1041123544 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 13.113973, -0.39453125, 0)
+
+[node name="Segment25" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1838899173 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 15.498332, -0.39453125, 0)
+
+[node name="Segment26" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=902642332 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 17.88269, -0.39453125, 0)
+
+[node name="Segment27" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=149568072 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 20.26705, -0.39453125, 0)
+
+[node name="Segment28" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1355146726 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 22.651407, -0.39453125, 0)
+
+[node name="Segment29" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=2091771625 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 25.035767, -0.39453125, 0)
+
+[node name="Segment30" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=2060090726 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 27.420126, -0.39453125, 0)
+
+[node name="Segment31" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1504869925 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 29.804483, -0.39453125, 0)
+
+[node name="Segment32" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=635395586 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 32.188843, -0.39453125, 0)
+
+[node name="Segment33" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=508679008 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 34.5732, -0.39453125, 0)
+
+[node name="Segment34" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1189395305 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 36.95756, -0.39453125, 0)
+
+[node name="Segment35" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=425174840 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 39.34192, -0.39453125, 0)
+
+[node name="Segment36" parent="WorldViewport/Location/Environment/Fences/Far" unique_id=1125419960 instance=ExtResource("props_fence")]
+transform = Transform3D(0.9934828, 0, 0, 0, 1.0116186, 0, 0, 0, 1, 41.726276, -0.39453125, 0)
+
+[node name="StreetLights" type="Node3D" parent="WorldViewport/Location/Environment" unique_id=1357040206]
+
+[node name="LampPost2" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=1310558519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.602201, 2.0035489, -5.2215023)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost3" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=985987001]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost2" unique_id=622926027 instance=ExtResource("props_lamp")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.9638914, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost2" unique_id=481733833]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, 0.86642647)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost3" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=985987001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.222818, 2.0035489, -5.2215023)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost4" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=845750755]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost3" unique_id=2030610571 instance=ExtResource("props_lamp")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.9638914, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost3" unique_id=851558991]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, 0.86642647)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost4" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=845750755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.946968, 2.0035489, -5.2215023)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost5" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1373055130]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost4" unique_id=442413418 instance=ExtResource("props_lamp")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.9638914, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost4" unique_id=922344804]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, 0.86642647)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost5" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=1373055130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.422935, 2.0035489, -5.2215023)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost6" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=324228249]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost5" unique_id=1728088719 instance=ExtResource("props_lamp")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.9638914, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost5" unique_id=157395490]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, 0.86642647)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost6" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=324228249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.052988, 2.0035489, -5.2215023)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost7" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=765397453]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost6" unique_id=1886780529 instance=ExtResource("props_lamp")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.9638914, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost6" unique_id=2092231005]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, 0.86642647)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost7" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=765397453]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.432371, 2.0035489, -5.2215023)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost8" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1303437843]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost7" unique_id=201966308 instance=ExtResource("props_lamp")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.9638914, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost7" unique_id=2008103907]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, 0.86642647)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost8" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=1303437843]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.708221, 2.0035489, -5.2215023)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost9" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1687774693]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost8" unique_id=525638933 instance=ExtResource("props_lamp")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.9638914, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost8" unique_id=196533722]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, 0.86642647)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost9" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=1687774693]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.232254, 2.0035489, -5.2215023)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost10" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=432628834]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost9" unique_id=762915740 instance=ExtResource("props_lamp")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1.9638914, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost9" unique_id=2039209213]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, 0.86642647)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost10" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=432628834]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.602201, 2.0035489, 9.619379)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost11" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=909189478]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost10" unique_id=176116627 instance=ExtResource("props_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9639981, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost10" unique_id=175025264]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, -0.890913)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost11" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=909189478]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.222818, 2.0035489, 9.619379)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost12" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=182942490]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost11" unique_id=1442448397 instance=ExtResource("props_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9639981, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost11" unique_id=1109867584]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, -0.890913)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost12" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=182942490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.946968, 2.0035489, 9.619379)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost13" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=39831614]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost12" unique_id=751174803 instance=ExtResource("props_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9639981, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost12" unique_id=1255530462]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, -0.890913)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost13" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=39831614]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.422935, 2.0035489, 9.619379)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost14" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=2021768962]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost13" unique_id=1836359046 instance=ExtResource("props_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9639981, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost13" unique_id=153167605]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, -0.890913)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost14" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=2021768962]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.052988, 2.0035489, 9.619379)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost15" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=755220392]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost14" unique_id=448805093 instance=ExtResource("props_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9639981, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost14" unique_id=895154501]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, -0.890913)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost15" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=755220392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.432371, 2.0035489, 9.619379)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost16" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=582267122]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost15" unique_id=1381115999 instance=ExtResource("props_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9639981, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost15" unique_id=1578705557]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, -0.890913)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost16" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=582267122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.708221, 2.0035489, 9.619379)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost17" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=243329418]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost16" unique_id=285589898 instance=ExtResource("props_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9639981, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost16" unique_id=782386753]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, -0.890913)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost17" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=243329418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.232254, 2.0035489, 9.619379)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="LampPost18" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=900995691]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost17" unique_id=55195460 instance=ExtResource("props_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9639981, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost17" unique_id=133774262]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, -0.890913)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="LampPost18" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=900995691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6674385, 2.0035489, 9.619379)
-mesh = SubResource("CylinderMesh_g4v7s")
 
-[node name="Tree13" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=888437843]
+[node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost18" unique_id=1532815921 instance=ExtResource("props_lamp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9639981, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldViewport/Location/Environment/StreetLights/LampPost18" unique_id=1581643516]
+transform = Transform3D(1, 0, 0, 0, 0.020167846, 0.9997966, 0, -0.9997966, 0.020167846, 0, 1.7647994, -0.890913)
+light_color = Color(1, 1, 0.8784314, 1)
+light_energy = 0.1374
+shadow_enabled = true
+
+[node name="Trees" type="Node3D" parent="WorldViewport/Location/Environment" unique_id=574703834]
+
+[node name="Tree13" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=888437843]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.164457, 3.2313538, 25.023806)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree14" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=988281872]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree13" unique_id=1703324887 instance=ExtResource("props_tree_01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3449726, -3.2272732, -1.6849823)
+
+[node name="Tree14" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=988281872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.040804, 3.2313538, 25.023806)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree15" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=371930470]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree14" unique_id=1165740787 instance=ExtResource("props_tree_02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
+
+[node name="Tree15" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=371930470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.9114, 3.2313538, 25.023806)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree17" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1041332752]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree15" unique_id=1800199687 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
+
+[node name="Tree17" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=1041332752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.488758, 3.2313538, 25.023806)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree18" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1387225041]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree17" unique_id=1407884826 instance=ExtResource("props_tree_01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
+
+[node name="Tree18" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=1387225041]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.432983, 3.2313538, 25.023806)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree19" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1343131039]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree18" unique_id=1063948842 instance=ExtResource("props_tree_02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
+
+[node name="Model3" parent="WorldViewport/Location/Environment/Trees/Tree18" unique_id=868325078 instance=ExtResource("props_tree_02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.718338, -3.2272732, -9.876137)
+
+[node name="Model2" parent="WorldViewport/Location/Environment/Trees/Tree18" unique_id=2025096198 instance=ExtResource("props_tree_02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.067585, -3.2272732, -8.997646)
+
+[node name="Tree19" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=1343131039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.856033, 3.2313538, 25.023806)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree4" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=341382102]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree19" unique_id=1761658427 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
+
+[node name="Model3" parent="WorldViewport/Location/Environment/Trees/Tree19" unique_id=236308146 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, -15.644192)
+
+[node name="Model2" parent="WorldViewport/Location/Environment/Trees/Tree19" unique_id=426095457 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, -11.82959)
+
+[node name="Tree4" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=341382102]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.101346, 3.2313538, 20.061264)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree5" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1155881312]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree4" unique_id=1762673645 instance=ExtResource("props_tree_01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
+
+[node name="Model2" parent="WorldViewport/Location/Environment/Trees/Tree4" unique_id=1356810389 instance=ExtResource("props_tree_01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0585585, -3.2272732, -1.2856178)
+
+[node name="Model3" parent="WorldViewport/Location/Environment/Trees/Tree4" unique_id=323912256 instance=ExtResource("props_tree_01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2035627, -3.2272732, -4.2162094)
+
+[node name="Model4" parent="WorldViewport/Location/Environment/Trees/Tree4" unique_id=85363811 instance=ExtResource("props_tree_01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.480193, -3.2272732, -6.343649)
+
+[node name="Tree5" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=1155881312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.470072, 3.2313538, 21.722645)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree6" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1271509388]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree5" unique_id=661396428 instance=ExtResource("props_tree_02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.310299, -3.2272732, -4.0759125)
+
+[node name="Tree6" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=1271509388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.94071, 3.2313538, 18.044762)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree7" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=1869295540]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree6" unique_id=87324501 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2115135, -3.2272732, -2.4579983)
+
+[node name="Tree7" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=1869295540]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.200623, 3.2313538, 20.061264)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree9" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=254452863]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree7" unique_id=1496492794 instance=ExtResource("props_tree_01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.423561, -3.3618228, 1.3494225)
+
+[node name="Tree9" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=254452863]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.526228, 3.2313538, 22.398766)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree10" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=215912750]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree9" unique_id=261052626 instance=ExtResource("props_tree_02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
+
+[node name="Model2" parent="WorldViewport/Location/Environment/Trees/Tree9" unique_id=1336861745 instance=ExtResource("props_tree_02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0336132, -3.2272732, 2.8711567)
+
+[node name="Tree10" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=215912750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.900473, 3.2313538, 15.715275)
-mesh = SubResource("BoxMesh_p1u0y")
 
-[node name="Tree11" type="MeshInstance3D" parent="WorldViewport/Location/Environment" unique_id=482915528]
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=2009247214 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
+
+[node name="Model2" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=181135585 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7293453, -3.2272732, 3.9092636)
+
+[node name="Tree11" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=482915528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.621796, 3.2313538, 23.286966)
-mesh = SubResource("BoxMesh_p1u0y")
+
+[node name="Model" parent="WorldViewport/Location/Environment/Trees/Tree11" unique_id=1225080339 instance=ExtResource("props_tree_01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
 
 [node name="Ground" type="StaticBody3D" parent="WorldViewport/Location" unique_id=116053647]
 
@@ -467,6 +852,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 5.6870294)
 mesh = SubResource("BoxMesh_curb_Far")
 surface_material_override/0 = ExtResource("surface_curb")
 
+[node name="Puddles" parent="WorldViewport/Location" unique_id=465808835 instance=ExtResource("night_puddles")]
+
 [node name="Traffic" type="Node3D" parent="WorldViewport" unique_id=466067046]
 script = ExtResource("10_blune")
 car_scene = ExtResource("11_th5th")
@@ -484,6 +871,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.04273, 0, 3.9446695)
 curve = SubResource("Curve3D_blune")
 
 [node name="BackwardTimer" type="Timer" parent="WorldViewport/Traffic" unique_id=974045951]
+
+[node name="Weather" parent="WorldViewport" unique_id=911279300 instance=ExtResource("night_weather")]
 
 [node name="PixelPostProcess" parent="." unique_id=1589926318 node_paths=PackedStringArray("world_viewport") instance=ExtResource("5_post")]
 world_viewport = NodePath("../WorldViewport")

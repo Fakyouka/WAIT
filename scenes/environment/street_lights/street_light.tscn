@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://resources/materials/environment/street_lights/base_concrete.tres" id="1_lt1wd"]
+[ext_resource type="Material" path="res://resources/materials/environment/street_lights/painted_metal.tres" id="2_e62su"]
+[ext_resource type="Material" path="res://resources/materials/environment/street_lights/lamp_lens_night.tres" id="3_u2e5c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_y8alb"]
+material = ExtResource("1_lt1wd")
+size = Vector3(0.2, 0.18, 0.2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lt1wd"]
+material = ExtResource("2_e62su")
+top_radius = 0.048
+bottom_radius = 0.064
+height = 3.82
+radial_segments = 6
+rings = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_e62su"]
+material = ExtResource("2_e62su")
+size = Vector3(0.145, 0.1, 0.145)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u2e5c"]
+material = ExtResource("2_e62su")
+size = Vector3(0.075, 0.08, 0.78)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b4nu3"]
+material = ExtResource("2_e62su")
+size = Vector3(0.24, 0.15, 0.62)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g47qq"]
+material = ExtResource("3_u2e5c")
+size = Vector3(0.19, 0.012, 0.52)
+
+[sub_resource type="BoxMesh" id="BoxMesh_urehw"]
+material = ExtResource("2_e62su")
+size = Vector3(0.055, 0.25, 0.014)
+
+[node name="StreetLight" type="Node3D" unique_id=1103118426]
+
+[node name="Foot" type="MeshInstance3D" parent="." unique_id=697986476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
+mesh = SubResource("BoxMesh_y8alb")
+
+[node name="Pole" type="MeshInstance3D" parent="." unique_id=586367896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06, 0)
+mesh = SubResource("CylinderMesh_lt1wd")
+
+[node name="Collar" type="MeshInstance3D" parent="." unique_id=642171147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92, 0)
+mesh = SubResource("BoxMesh_e62su")
+
+[node name="Arm" type="MeshInstance3D" parent="." unique_id=376139515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.98, -0.35)
+mesh = SubResource("BoxMesh_u2e5c")
+
+[node name="Housing" type="MeshInstance3D" parent="." unique_id=750732711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.97, -0.83)
+mesh = SubResource("BoxMesh_b4nu3")
+
+[node name="Lens" type="MeshInstance3D" parent="." unique_id=222051920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.888, -0.83)
+mesh = SubResource("BoxMesh_g47qq")
+
+[node name="AccessPanel" type="MeshInstance3D" parent="." unique_id=1867109158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68, -0.059)
+mesh = SubResource("BoxMesh_urehw")
+
+[node name="WarmLight" type="OmniLight3D" parent="."]
+position = Vector3(0, 3.78, -0.83)
+light_color = Color(1, 0.84, 0.65, 1)
+light_energy = 1.4
+light_specular = 1.0
+omni_range = 8.2
+omni_attenuation = 1.6
+shadow_enabled = false

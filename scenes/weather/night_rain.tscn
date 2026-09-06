@@ -1,0 +1,51 @@
+[gd_scene format=3]
+
+[ext_resource type="AudioStream" path="res://assets/audio/ambience/rain/rain.ogg" id="1_1w3pk"]
+
+[sub_resource type="Gradient" id="Gradient_2xaki"]
+offsets = PackedFloat32Array(0, 0.08, 0.85, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ad0c2"]
+gradient = SubResource("Gradient_2xaki")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oyige"]
+emission_shape = 3
+emission_box_extents = Vector3(22, 0.02, 9.7)
+direction = Vector3(0.025, -1, 0.005)
+spread = 0.0
+initial_velocity_min = 5.5
+initial_velocity_max = 5.65
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 1.15
+color_ramp = SubResource("GradientTexture1D_ad0c2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_euvn3"]
+resource_name = "WAIT Light Rain Drop"
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.48, 0.57, 0.65, 0.36)
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_byhk2"]
+material = SubResource("StandardMaterial3D_euvn3")
+size = Vector3(0.012, 0.1, 0.012)
+
+[node name="Weather" type="Node3D" unique_id=1867100247]
+
+[node name="Rain" type="GPUParticles3D" parent="." unique_id=373764790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8, 7.3)
+cast_shadow = 0
+amount = 560
+preprocess = 1.0
+visibility_aabb = AABB(-23, -6, -10, 46, 6.4, 20)
+process_material = SubResource("ParticleProcessMaterial_oyige")
+draw_pass_1 = SubResource("BoxMesh_byhk2")
+
+[node name="RainAmbience" type="AudioStreamPlayer" parent="." unique_id=1965584690]
+stream = ExtResource("1_1w3pk")
+volume_db = -8.0
+autoplay = true
+bus = &"Ambience"

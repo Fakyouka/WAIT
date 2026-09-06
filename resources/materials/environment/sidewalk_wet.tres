@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/environment/sidewalk.png" id="1_jaeq0"]
+
+[resource]
+resource_name = "WAIT Damp Sidewalk"
+albedo_color = Color(0.83, 0.87, 0.9, 1)
+albedo_texture = ExtResource("1_jaeq0")
+metallic_specular = 0.25
+roughness = 0.72
+uv1_scale = Vector3(0.41666666, 0.41666666, 0.41666666)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 8.0
+uv1_world_triplanar = true
+texture_filter = 0
