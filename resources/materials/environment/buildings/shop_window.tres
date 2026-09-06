@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://pbgw3rprxuxr"]
+
+[ext_resource type="Texture2D" uid="uid://cqokmuksxytr1" path="res://assets/textures/environment/buildings/shop_window.png" id="1_arcce"]
+[ext_resource type="Texture2D" uid="uid://d2uefka427vsu" path="res://assets/textures/environment/buildings/shop_window_emission.png" id="2_arraj"]
+
+[resource]
+resource_name = "WAIT Shop Window"
+albedo_texture = ExtResource("1_arcce")
+metallic_specular = 0.16
+roughness = 0.84
+emission_enabled = true
+emission = Color(0.83, 0.72, 0.49, 1)
+emission_energy_multiplier = 0.85
+emission_texture = ExtResource("2_arraj")
+texture_filter = 0

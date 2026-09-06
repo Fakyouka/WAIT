@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3hrtnfhwo5xl"]
+
+[ext_resource type="Texture2D" uid="uid://bqd38f2hy88cs" path="res://assets/textures/environment/buildings/window_warm.png" id="1_4cnfr"]
+[ext_resource type="Texture2D" uid="uid://bg46n4k4qk0f5" path="res://assets/textures/environment/buildings/window_warm_emission.png" id="2_bv6r6"]
+
+[resource]
+resource_name = "WAIT Window Warm"
+albedo_texture = ExtResource("1_4cnfr")
+metallic_specular = 0.16
+roughness = 0.84
+emission_enabled = true
+emission = Color(0.83, 0.72, 0.49, 1)
+emission_energy_multiplier = 0.65
+emission_texture = ExtResource("2_bv6r6")
+texture_filter = 0

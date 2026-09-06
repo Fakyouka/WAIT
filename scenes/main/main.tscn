@@ -7,8 +7,18 @@
 [ext_resource type="PackedScene" path="res://scenes/rendering/pixel_post_process.tscn" id="5_post"]
 [ext_resource type="Script" uid="uid://d2wmxbhpswb7o" path="res://scripts/traffic/traffic_manager.gd" id="10_blune"]
 [ext_resource type="PackedScene" uid="uid://cc3uvdpg67nsx" path="res://scenes/traffic/traffic_car.tscn" id="11_th5th"]
+[ext_resource type="Material" uid="uid://bu7ce2ndrp0mj" path="res://resources/materials/environment/buildings/plaster_sage.tres" id="building_material_4"]
+[ext_resource type="Material" uid="uid://t733git3nx6l" path="res://resources/materials/environment/buildings/plaster_warm.tres" id="building_material_5"]
+[ext_resource type="Material" uid="uid://d0j860mtkbmqm" path="res://resources/materials/environment/buildings/brick_clay.tres" id="building_material_6"]
+[ext_resource type="PackedScene" path="res://scenes/environment/buildings/build_shop_1_visuals.tscn" id="building_visual_0"]
+[ext_resource type="PackedScene" path="res://scenes/environment/buildings/build_2_visuals.tscn" id="building_visual_1"]
+[ext_resource type="PackedScene" path="res://scenes/environment/buildings/build_3_visuals.tscn" id="building_visual_2"]
+[ext_resource type="PackedScene" path="res://scenes/environment/buildings/build_4_visuals.tscn" id="building_visual_3"]
+[ext_resource type="PackedScene" path="res://scenes/environment/buildings/build_6_visuals.tscn" id="building_visual_4"]
+[ext_resource type="PackedScene" path="res://scenes/environment/buildings/build_7_visuals.tscn" id="building_visual_5"]
+[ext_resource type="PackedScene" path="res://scenes/environment/buildings/build_8_visuals.tscn" id="building_visual_6"]
 [ext_resource type="PackedScene" path="res://scenes/weather/puddles.tscn" id="night_puddles"]
-[ext_resource type="PackedScene" path="res://scenes/weather/night_rain.tscn" id="night_weather"]
+[ext_resource type="PackedScene" uid="uid://ckfqkuukp4xdr" path="res://scenes/weather/night_rain.tscn" id="night_weather"]
 [ext_resource type="PackedScene" path="res://scenes/environment/fence/fence_segment.tscn" id="props_fence"]
 [ext_resource type="PackedScene" path="res://scenes/environment/street_lights/street_light.tscn" id="props_lamp"]
 [ext_resource type="PackedScene" uid="uid://bi80pm886c6i3" path="res://scenes/environment/trees/tree_01.tscn" id="props_tree_01"]
@@ -245,6 +255,11 @@ transform = Transform3D(0.0007113337, 0, -0.99999976, 0, 1, 0, 0.99999976, 0, 0.
 
 [node name="SideWalkFar" type="MeshInstance3D" parent="WorldViewport/Location/SideWalkFar" unique_id=1845720675]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23022461, 7.9253693)
+mesh = SubResource("BoxMesh_fcnqv")
+surface_material_override/0 = ExtResource("surface_sidewalk")
+
+[node name="SideWalkFar2" type="MeshInstance3D" parent="WorldViewport/Location/SideWalkFar" unique_id=626077931]
+transform = Transform3D(-0.0013331608, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.0013331608, 0, -0.23022461, 61.08794)
 mesh = SubResource("BoxMesh_fcnqv")
 surface_material_override/0 = ExtResource("surface_sidewalk")
 
@@ -660,7 +675,7 @@ light_energy = 0.1374
 shadow_enabled = true
 
 [node name="LampPost18" type="Node3D" parent="WorldViewport/Location/Environment/StreetLights" unique_id=900995691]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6674385, 2.0035489, 9.619379)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4416103, 2.0035489, 9.619379)
 
 [node name="Model" parent="WorldViewport/Location/Environment/StreetLights/LampPost18" unique_id=1532815921 instance=ExtResource("props_lamp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.9639981, 0)
@@ -763,6 +778,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
 [node name="Model2" parent="WorldViewport/Location/Environment/Trees/Tree9" unique_id=1336861745 instance=ExtResource("props_tree_02")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0336132, -3.2272732, 2.8711567)
 
+[node name="Model3" parent="WorldViewport/Location/Environment/Trees/Tree9" unique_id=207189542 instance=ExtResource("props_tree_02")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0336132, -3.2272732, -28.598307)
+
 [node name="Tree10" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=215912750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.900473, 3.2313538, 15.715275)
 
@@ -771,6 +789,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.2272732, 0)
 
 [node name="Model2" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=181135585 instance=ExtResource("props_tree_03")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7293453, -3.2272732, 3.9092636)
+
+[node name="Model3" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=1961968479 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7293453, -3.2272732, -21.7649)
+
+[node name="Model4" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=301167357 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.787382, -3.2272732, -21.7649)
+
+[node name="Model9" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=671291186 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.284693, -3.2272732, -23.821346)
+
+[node name="Model10" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=128615165 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.419832, -3.2272732, -22.601334)
+
+[node name="Model11" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=235759432 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.96575, -3.2272732, -21.477133)
+
+[node name="Model5" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=88337908 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8124256, -3.2272732, -21.7649)
+
+[node name="Model6" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=1703782487 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8611603, -3.2272732, -21.7649)
+
+[node name="Model7" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=250226139 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.874643, -3.2272732, -21.7649)
+
+[node name="Model8" parent="WorldViewport/Location/Environment/Trees/Tree10" unique_id=633257715 instance=ExtResource("props_tree_03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.728754, -3.2272732, -21.7649)
 
 [node name="Tree11" type="Node3D" parent="WorldViewport/Location/Environment/Trees" unique_id=482915528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.621796, 3.2313538, 23.286966)
@@ -795,30 +840,88 @@ surface_material_override/0 = ExtResource("surface_ground")
 [node name="Build_Shop1" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=457894647]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9929466, 37.460686)
 mesh = SubResource("BoxMesh_2j2di")
+surface_material_override/0 = ExtResource("building_material_5")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build_Shop1" unique_id=203057878 instance=ExtResource("building_visual_0")]
 
 [node name="Build2" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=240113024]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.43998, 11.002412, 38.04523)
 mesh = SubResource("BoxMesh_wgxnn")
+surface_material_override/0 = ExtResource("building_material_5")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build2" unique_id=995791440 instance=ExtResource("building_visual_1")]
+
+[node name="Build10" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=604527551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.921085, 11.002412, 54.950058)
+mesh = SubResource("BoxMesh_wgxnn")
+surface_material_override/0 = ExtResource("building_material_5")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build10" unique_id=1076917543 instance=ExtResource("building_visual_1")]
 
 [node name="Build3" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=1221256268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.089947, 15.163532, 44.501545)
 mesh = SubResource("BoxMesh_avnxn")
+surface_material_override/0 = ExtResource("building_material_4")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build3" unique_id=9749531 instance=ExtResource("building_visual_2")]
+
+[node name="Build5" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=1279917590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.595348, 19.585878, 64.53694)
+mesh = SubResource("BoxMesh_avnxn")
+surface_material_override/0 = ExtResource("building_material_4")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build5" unique_id=91058417 instance=ExtResource("building_visual_2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.867687, 0)
 
 [node name="Build4" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=113230140]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.483578, 5.2795544, 38.128357)
 mesh = SubResource("BoxMesh_qssos")
+surface_material_override/0 = ExtResource("building_material_6")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build4" unique_id=94669865 instance=ExtResource("building_visual_3")]
+
+[node name="Build11" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=1667494045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.96222, 5.2795544, 38.128357)
+mesh = SubResource("BoxMesh_qssos")
+surface_material_override/0 = ExtResource("building_material_6")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build11" unique_id=301967481 instance=ExtResource("building_visual_3")]
+
+[node name="Build12" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=858105116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.96222, 15.872976, 38.128357)
+mesh = SubResource("BoxMesh_qssos")
+surface_material_override/0 = ExtResource("building_material_6")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build12" unique_id=1365023316 instance=ExtResource("building_visual_3")]
 
 [node name="Build6" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=1405818333]
 transform = Transform3D(-0.9999051, 0, -0.013777385, 0, 1, 0, 0.013777385, 0, -0.9999051, 16.00724, 11.002412, -17.516861)
 mesh = SubResource("BoxMesh_wgxnn")
+surface_material_override/0 = ExtResource("building_material_4")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build6" unique_id=1331672789 instance=ExtResource("building_visual_4")]
 
 [node name="Build7" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=208963793]
 transform = Transform3D(-0.9999051, 0, -0.013777385, 0, 1, 0, 0.013777385, 0, -0.9999051, -26.026142, 15.163532, -16.701614)
 mesh = SubResource("BoxMesh_avnxn")
+surface_material_override/0 = ExtResource("building_material_5")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build7" unique_id=30342233 instance=ExtResource("building_visual_5")]
 
 [node name="Build8" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=56120797]
 transform = Transform3D(-0.9999051, 0, -0.013777385, 0, 1, 0, 0.013777385, 0, -0.9999051, 39.04751, 5.2795544, -17.917458)
 mesh = SubResource("BoxMesh_qssos")
+surface_material_override/0 = ExtResource("building_material_6")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build8" unique_id=824283364 instance=ExtResource("building_visual_6")]
+
+[node name="Build9" type="MeshInstance3D" parent="WorldViewport/Location/Buldings" unique_id=1979634585]
+transform = Transform3D(-0.9999051, 0, -0.013777385, 0, 1, 0, 0.013777385, 0, -0.9999051, 9.104403, 7.15032, 64.68284)
+mesh = SubResource("BoxMesh_qssos")
+surface_material_override/0 = ExtResource("building_material_6")
+
+[node name="Visuals" parent="WorldViewport/Location/Buldings/Build9" unique_id=853755774 instance=ExtResource("building_visual_6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7533283, 0)
 
 [node name="Curbs" type="Node3D" parent="WorldViewport/Location" unique_id=515481340]
 
@@ -857,8 +960,6 @@ surface_material_override/0 = ExtResource("surface_curb")
 [node name="Traffic" type="Node3D" parent="WorldViewport" unique_id=466067046]
 script = ExtResource("10_blune")
 car_scene = ExtResource("11_th5th")
-min_spawn_delay = 6.0
-max_spawn_delay = 15.0
 
 [node name="LaneForward" type="Path3D" parent="WorldViewport/Traffic" unique_id=221276666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.838997, 0, 0)

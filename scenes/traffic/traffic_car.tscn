@@ -1,23 +1,5 @@
 [gd_scene format=3 uid="uid://cc3uvdpg67nsx"]
 
-[ext_resource type="Script" uid="uid://fco6eijq0a4h" path="res://scripts/traffic/traffic_car.gd" id="1_r0csr"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/car_hatchback.tscn" id="1_vehicle"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
-size = Vector3(2.324707, 1, 4.9537354)
-
-[sub_resource type="BoxMesh" id="BoxMesh_yf5fn"]
-size = Vector3(2.3122559, 0.7550049, 3.4865112)
-
-[node name="TrafficCar" type="PathFollow3D" unique_id=1365189923]
-script = ExtResource("1_r0csr")
-
-[node name="Visual" type="Node3D" parent="." unique_id=1931129807]
-transform = Transform3D(-1, 0, -2.4406118e-05, 0, 1, 0, 2.4406118e-05, 0, -1, 0, 0, 0)
-
-[node name="Body" type="MeshInstance3D" parent="Visual" unique_id=920304341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019305706, 0, 0.043762207)
-mesh = SubResource("BoxMesh_g4v7s")
-
-[node name="Cabin" type="MeshInstance3D" parent="Visual" unique_id=832471327]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130615225, 0.845821, -0.2328186)
-mesh = SubResource("BoxMesh_yf5fn")
+[node name="TrafficCar" instance=ExtResource("1_vehicle")]

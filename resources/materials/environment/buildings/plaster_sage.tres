@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bu7ce2ndrp0mj"]
+
+[ext_resource type="Texture2D" uid="uid://bki0wi48gxrq0" path="res://assets/textures/environment/buildings/plaster_sage.png" id="1_ls70x"]
+
+[resource]
+resource_name = "WAIT Plaster Sage"
+albedo_color = Color(0.92, 0.95, 0.97, 1)
+albedo_texture = ExtResource("1_ls70x")
+metallic_specular = 0.16
+roughness = 0.84
+emission_enabled = true
+emission = Color(0.92, 0.95, 0.97, 1)
+emission_energy_multiplier = 0.16
+emission_texture = ExtResource("1_ls70x")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 16.0
+texture_filter = 0

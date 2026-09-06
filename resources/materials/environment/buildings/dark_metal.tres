@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b0hxqbaa605a5"]
+
+[resource]
+resource_name = "WAIT Dark Metal"
+albedo_color = Color(0.16, 0.2, 0.21, 1)
+metallic_specular = 0.16
+roughness = 0.84
+texture_filter = 0

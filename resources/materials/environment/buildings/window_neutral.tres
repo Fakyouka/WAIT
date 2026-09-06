@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dnjl1ixj7jb5"]
+
+[ext_resource type="Texture2D" uid="uid://con8s820of0h7" path="res://assets/textures/environment/buildings/window_neutral.png" id="1_bw1oa"]
+[ext_resource type="Texture2D" uid="uid://bu1yx76hbpeg7" path="res://assets/textures/environment/buildings/window_neutral_emission.png" id="2_hvn63"]
+
+[resource]
+resource_name = "WAIT Window Neutral"
+albedo_texture = ExtResource("1_bw1oa")
+metallic_specular = 0.16
+roughness = 0.84
+emission_enabled = true
+emission = Color(0.72, 0.74, 0.66, 1)
+emission_energy_multiplier = 0.38
+emission_texture = ExtResource("2_hvn63")
+texture_filter = 0

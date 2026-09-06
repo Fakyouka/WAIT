@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cdftt827cg5eo"]
+
+[ext_resource type="Texture2D" uid="uid://diqphl8bjg4vy" path="res://assets/textures/environment/buildings/plaster_warm.png" id="1_8vbiq"]
+
+[resource]
+resource_name = "WAIT Concrete Trim"
+albedo_color = Color(0.6, 0.63, 0.62, 1)
+albedo_texture = ExtResource("1_8vbiq")
+metallic_specular = 0.16
+roughness = 0.84
+emission_enabled = true
+emission = Color(0.6, 0.63, 0.62, 1)
+emission_energy_multiplier = 0.16
+emission_texture = ExtResource("1_8vbiq")
+uv1_scale = Vector3(0.4, 0.4, 0.4)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 16.0
+texture_filter = 0

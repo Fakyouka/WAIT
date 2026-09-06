@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://t733git3nx6l"]
+
+[ext_resource type="Texture2D" uid="uid://diqphl8bjg4vy" path="res://assets/textures/environment/buildings/plaster_warm.png" id="1_hgdhi"]
+
+[resource]
+resource_name = "WAIT Plaster Warm"
+albedo_color = Color(0.9, 0.92, 0.9, 1)
+albedo_texture = ExtResource("1_hgdhi")
+metallic_specular = 0.16
+roughness = 0.84
+emission_enabled = true
+emission = Color(0.9, 0.92, 0.9, 1)
+emission_energy_multiplier = 0.16
+emission_texture = ExtResource("1_hgdhi")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 16.0
+texture_filter = 0

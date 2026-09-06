@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://qnmorv8yl8oi"]
+
+[ext_resource type="Texture2D" uid="uid://dbwqocoa22pnj" path="res://assets/textures/environment/buildings/window_dark.png" id="1_d6nte"]
+
+[resource]
+resource_name = "WAIT Window Dark"
+albedo_texture = ExtResource("1_d6nte")
+metallic_specular = 0.16
+roughness = 0.84
+texture_filter = 0
