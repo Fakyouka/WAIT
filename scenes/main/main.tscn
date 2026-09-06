@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" path="res://scenes/props/sticker_board.tscn" id="3_k2fmo"]
 [ext_resource type="Environment" uid="uid://bq58ekxj4ed4t" path="res://resources/environments/wait_overcast_evening.tres" id="4_environment"]
 [ext_resource type="PackedScene" path="res://scenes/rendering/pixel_post_process.tscn" id="5_post"]
+[ext_resource type="Script" uid="uid://d2wmxbhpswb7o" path="res://scripts/traffic/traffic_manager.gd" id="10_blune"]
+[ext_resource type="PackedScene" uid="uid://cc3uvdpg67nsx" path="res://scenes/traffic/traffic_car.tscn" id="11_th5th"]
 [ext_resource type="Material" path="res://resources/materials/environment/curb.tres" id="surface_curb"]
 [ext_resource type="Material" path="res://resources/materials/environment/ground.tres" id="surface_ground"]
 [ext_resource type="Material" path="res://resources/materials/environment/road_asphalt.tres" id="surface_road_asphalt"]
@@ -59,19 +61,33 @@ size = Vector3(19.28833, 10.6311035, 14.928101)
 size = Vector3(12.738281, 0.23, 0.16)
 
 [sub_resource type="BoxMesh" id="BoxMesh_curb_NearLeft"]
-size = Vector3(44.124897, 0.23, 0.16)
+size = Vector3(44.16938, 0.23, 0.16)
 
 [sub_resource type="BoxMesh" id="BoxMesh_curb_NearRight"]
 size = Vector3(44.11497, 0.23, 0.16)
 
 [sub_resource type="BoxMesh" id="BoxMesh_curb_StopReturnLeft"]
-size = Vector3(0.16, 0.23, 0.22101565)
+size = Vector3(0.20522216, 0.23, 0.22101565)
 
 [sub_resource type="BoxMesh" id="BoxMesh_curb_StopReturnRight"]
 size = Vector3(0.16, 0.23, 0.22101565)
 
 [sub_resource type="BoxMesh" id="BoxMesh_curb_Far"]
 size = Vector3(101.319336, 0.23, 0.16)
+
+[sub_resource type="Curve3D" id="Curve3D_a8run"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.00059890747, -0.007253647, -0.0092430115, 0, 0, 0, 0, 0, 0, -99.43875, -0.074512005, -0.027739525),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_blune"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0036506653, 0.006023288, 0.0065176487, 0, 0, 0, 0, 0, 0, 99.01779, -0.054240465, 0.075671434),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Main" type="Node3D" unique_id=182432716]
 
@@ -427,7 +443,7 @@ mesh = SubResource("BoxMesh_curb_NearStop")
 surface_material_override/0 = ExtResource("surface_curb")
 
 [node name="NearLeft" type="MeshInstance3D" parent="WorldViewport/Location/Curbs" unique_id=105250620]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.785334, -0.06, -1.3178358)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.763092, -0.06, -1.3178358)
 mesh = SubResource("BoxMesh_curb_NearLeft")
 surface_material_override/0 = ExtResource("surface_curb")
 
@@ -437,7 +453,7 @@ mesh = SubResource("BoxMesh_curb_NearRight")
 surface_material_override/0 = ExtResource("surface_curb")
 
 [node name="StopReturnLeft" type="MeshInstance3D" parent="WorldViewport/Location/Curbs" unique_id=1108929840]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.802885, -0.06, -1.5083436)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.780274, -0.06, -1.5083436)
 mesh = SubResource("BoxMesh_curb_StopReturnLeft")
 surface_material_override/0 = ExtResource("surface_curb")
 
@@ -450,6 +466,24 @@ surface_material_override/0 = ExtResource("surface_curb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06, 5.6870294)
 mesh = SubResource("BoxMesh_curb_Far")
 surface_material_override/0 = ExtResource("surface_curb")
+
+[node name="Traffic" type="Node3D" parent="WorldViewport" unique_id=466067046]
+script = ExtResource("10_blune")
+car_scene = ExtResource("11_th5th")
+min_spawn_delay = 6.0
+max_spawn_delay = 15.0
+
+[node name="LaneForward" type="Path3D" parent="WorldViewport/Traffic" unique_id=221276666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.838997, 0, 0)
+curve = SubResource("Curve3D_a8run")
+
+[node name="ForwardTimer" type="Timer" parent="WorldViewport/Traffic" unique_id=1983532121]
+
+[node name="LaneBackward" type="Path3D" parent="WorldViewport/Traffic" unique_id=2120277186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.04273, 0, 3.9446695)
+curve = SubResource("Curve3D_blune")
+
+[node name="BackwardTimer" type="Timer" parent="WorldViewport/Traffic" unique_id=974045951]
 
 [node name="PixelPostProcess" parent="." unique_id=1589926318 node_paths=PackedStringArray("world_viewport") instance=ExtResource("5_post")]
 world_viewport = NodePath("../WorldViewport")
