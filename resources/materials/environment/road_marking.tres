@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "WAIT Road Marking"
+albedo_color = Color(0.7, 0.69, 0.62, 1)
+metallic_specular = 0.12
+texture_filter = 0

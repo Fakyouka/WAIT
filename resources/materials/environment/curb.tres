@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "WAIT Curb"
+albedo_color = Color(0.53, 0.54, 0.53, 1)
+metallic_specular = 0.12
+texture_filter = 0

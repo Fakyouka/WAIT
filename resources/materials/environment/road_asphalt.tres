@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/environment/road_asphalt.png" id="1_pf1f5"]
+
+[resource]
+resource_name = "WAIT Road Asphalt"
+albedo_texture = ExtResource("1_pf1f5")
+metallic_specular = 0.12
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 8.0
+uv1_world_triplanar = true
+texture_filter = 0

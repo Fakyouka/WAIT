@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/environment/sidewalk.png" id="1_w2g75"]
+
+[resource]
+resource_name = "WAIT Sidewalk"
+albedo_texture = ExtResource("1_w2g75")
+metallic_specular = 0.12
+uv1_scale = Vector3(0.41666666, 0.41666666, 0.41666666)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 8.0
+uv1_world_triplanar = true
+texture_filter = 0
